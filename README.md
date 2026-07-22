@@ -1,7 +1,3 @@
-# i.MX6ULL-Based In-Vehicle Intelligent Terminal System
-
-基于 NXP i.MX6ULL 和嵌入式 Linux 开发的车载智能终端系统。项目采用 Qt 构建图形化交互界面，集成 USB 摄像头、超声波测距、网络天气查询、车辆状态显示及多媒体等功能。
-
 # 🚗 嵌入式智能车载信息娱乐系统
 
 > 基于 **ARM Linux + Qt 5 / C++** 的智能车载信息娱乐系统，集成环境感知、倒车影像、超声波泊车辅助、在线天气、GPS 地图导航、多媒体娱乐等核心功能模块。
