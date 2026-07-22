@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Video</class>
+ <widget class="QWidget" name="Video">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>480</width>
+    <height>272</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>944</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border: none;
+    background-color: transparent;
+    border-radius: 20px;
+}
+/* 针对底部控制栏容器（widget_2）的背景再次确认 */
+QWidget#widget_2 {
+    background-color: #1a1a1a; /* 比纯黑稍微浅一点的深灰，能看清按钮边缘 */
+    border-top: 1px solid #333333;
+}
+
+/* --- 核心修改：让图标变白 --- */
+QPushButton {
+    border: none;
+    background-color: transparent;
+    /* 如果你的图标是黑色透明底，可以尝试加一个白色遮罩或直接换白图标 */
+    /* 暂时先用半透明背景把位置标出来 */
+}
+
+/* 鼠标悬停时，给按钮加一个淡淡的圆形背景，这样就算图标看不清，也能知道位置 */
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 50); 
+    border-radius: 20px;
+}
+
+/* 针对进度条和音量条的颜色 */
+QSlider::groove:horizontal {
+    background: #333333;
+    height: 4px;
+    border-radius: 2px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #0078d7; /* 已播放部分用蓝色 */
+}
+
+QSlider::handle:horizontal {
+    background: #ffffff; /* 滑块用白色，在黑色背景下极显眼 */
+    width: 12px;
+    height: 12px;
+    margin: -4px 0;
+    border-radius: 6px;
+}
+
+/* 修正 Label 颜色，确保时间能看清 */
+QLabel {
+    color: #ffffff; 
+    font-weight: bold;
+}
+/* 1. 视频播放区域：纯黑背景，确保视频对比度最高 */
+QVideoWidget#widget {
+    background-color: #000000;
+    border: none;
+}
+
+/* 2. 右侧视频列表栏：深灰黑色背景 */
+QListWidget#videolist {
+    background-color: #121212; 
+    border: none;
+    border-left: 1px solid #2d2d2d; 
+    color: #b0b0b0; 
+    
+    /* --- 修改这里：增大字体并加粗 --- */
+    font-size: 15px; 
+    font-weight: bold;
+    font-family: &quot;SimSun&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; /* 确保中文字体清晰 */
+    
+    outline: none; 
+}
+
+/* 列表项的间距：字体变大后，增加一点高度会让触控更方便 */
+QListWidget::item {
+    height: 40px;      /* 设置每一行的高度 */
+    padding-left: 10px; /* 文字离左边的距离 */
+}
+
+/* 列表项被选中：保持原有风格，配合大字体 */
+QListWidget::item:selected {
+    background-color: #005a9e; 
+    color: #ffffff;
+    border-left: 4px solid #0078d7; /* 稍稍加宽左侧亮条 */
+}
+
+/* 3. 根容器背景：统一色调 */
+QWidget#Video {
+    background-color: #1a1a1a;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1">
+     <item>
+      <widget class="QVideoWidget" name="videowidget" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="videolist"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(35, 35, 40);</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QSlider" name="videoslider">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="paly_btn">
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/img/play_button_white.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="next_btn">
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/img/next1);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="volume">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/img/volume.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="volumeSlider">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="curtime">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>00:00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="totaltime">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>/00:00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="largewidget_btn">
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/img/allscreen.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QVideoWidget</class>
+   <extends>QWidget</extends>
+   <header>qvideowidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

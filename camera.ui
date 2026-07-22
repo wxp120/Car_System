@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Camera</class>
+ <widget class="QWidget" name="Camera">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>944</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>944</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===== 主窗口全局 ===== */
+#Camera {
+    background-color: transparent; /* 保留背景图 */
+    font-family: &quot;微软雅黑&quot;, &quot;思源黑体&quot;, sans-serif;
+}
+
+/* 全局所有文字 统一白色 */
+QLabel {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* ===== 左侧距离预警卡片 ===== */
+#widget {
+    background-color: transparent;
+	border-radius: 14px;
+    border: none;
+}
+
+/* 主标题 */
+QLabel#label_title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* 标题：后方障碍物相对距离 */
+QLabel#label_tips {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* 核心超大距离数字 */
+QLabel#label_distance {
+    font-size: 72px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* 警示小字：距离过近 */
+QLabel#tip_warning {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* 底部状态：蜂鸣器：已启用 */
+QLabel#status_buzzer {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* ===== 右侧摄像头画面卡片 —— 新加高级半透明底色 ===== */
+#widget_2 {
+    background-color: rgba(30, 30, 50, 0.6); /* 半透深蓝灰底色 */
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 柔和白边 */
+}
+
+/* 标题：倒车影像视频画面 */
+QLabel#label_introduce {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* 右上角：摄像头：未开启 */
+QLabel#camera_status {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+/* 视频预览黑屏区域 —— 加半透底色 */
+#camera_widget {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ===== 所有按钮样式 ===== */
+QPushButton {
+    background-color: #3498f0;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #2187e0;
+}
+
+QPushButton:pressed {
+    background-color: #1965c0;
+}
+
+/* 打开摄像头按钮 */
+QPushButton#btn_camera_on {
+    font-size: 18px;
+    min-height: 42px;
+}</string>
+  </property>
+  <widget class="QWidget" name="widget_02" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>281</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="label_distance">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>181</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>100m</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tip_warning">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>190</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>距离过近，请减速</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>410</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>使用蜂鸣器</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>281</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/img/雷达.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_tips">
+       <property name="text">
+        <string>后方障碍物相对距离</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>201</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_buzzer">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/img/声音.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="status_buzzer">
+       <property name="text">
+        <string>蜂鸣器已启用</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget_03" native="true">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>100</y>
+     <width>611</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="camera_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>50</y>
+      <width>561</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_camera_on">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>410</y>
+      <width>151</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>打开摄像头</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="camera_status">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>20</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>摄像头：未开启</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>256</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_video_icon">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/img/视频 (2).png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_introduce">
+       <property name="text">
+        <string>倒车影像视频画面</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget_01" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-40</x>
+     <y>0</y>
+     <width>971</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_title">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>倒车影像</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
